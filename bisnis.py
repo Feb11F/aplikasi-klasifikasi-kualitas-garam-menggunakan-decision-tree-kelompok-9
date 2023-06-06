@@ -20,7 +20,7 @@ st.set_page_config(
     }
 )
 st.write("""
-<center><h2 style = "text-align: justify;">ANALISIS SENTIMEN PADA WISATA DIENG DENGAN ALGORITMA K-NEAREST NEIGHBOR (K-NN)</h2></center>
+<center><h2 style = "text-align: justify;">KLASIFIKASI KUALITAS GARAM MENGGUNAKAN DECISION TREE </h2></center>
 """,unsafe_allow_html=True)
 st.write("### Dosen Pengampu : Dr. FIKA HASTARITA RACHMAN, ST., M.Eng",unsafe_allow_html=True)
 
