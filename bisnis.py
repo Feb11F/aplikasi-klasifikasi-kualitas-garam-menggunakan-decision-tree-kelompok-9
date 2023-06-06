@@ -40,9 +40,13 @@ with st.container():
 
 
     if selected == "Implementation":
+        inputs=[]
+        input_norm=[]
+        
         # Menggunakan fungsi `read_csv` untuk memuat dataset dari file CSV
         data = pd.read_csv('https://raw.githubusercontent.com/Feb11F/dataset/main/data%20garam%20(1).csv')
         #Getting input from user
+        
         
         # Memuat dataset 
         X = data.drop(['Grade','Data'],axis=1)
