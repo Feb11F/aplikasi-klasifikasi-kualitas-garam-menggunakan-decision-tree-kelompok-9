@@ -40,57 +40,59 @@ with st.container():
 
 
     if selected == "Implementation":
-        inputs=[]
-        input_norm=[]
-        
-        # Menggunakan fungsi `read_csv` untuk memuat dataset dari file CSV
-        data = pd.read_csv('https://raw.githubusercontent.com/Feb11F/dataset/main/data%20garam%20(1).csv')
-        #Getting input from user
-        
-        
-        # Memuat dataset 
-        X = data.drop(['Grade','Data'],axis=1)
-        y = data['Grade'] # Kelas
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            inputs=[]
+            input_norm=[]
 
-        # Membagi dataset menjadi data latih dan data uji
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
-
-        # Membuat objek Decision Tree Classifier
-        clf = DecisionTreeClassifier(max_depth=9)
-
-        # Melatih Decision Tree Classifier menggunakan data latih
-        clf.fit(X_train, y_train)
-
-        # Memprediksi kelas untuk data uji
-        y_pred = clf.predict(X_test)
-
-        # Menghitung akurasi prediksi
-        accuracy = metrics.accuracy_score(y_test, y_pred)
-        print("Akurasi: {:.2f}%".format(accuracy*100))
-        with st.form("my_form"):
-            st.subheader("Implementasi")
-            kadar_air = st.number_input('Masukkan kadar air')
-            tak_larut = st.number_input('Masukkan kandungan zat tak larut')
-            kalsium = st.number_input('Masukkan kandungan kalsium')
-            magnesium = st.number_input('Masukkan kandungan magnesium')
-            sulfat = st.number_input('Masukkan kandungan sulfat')
-            naclwb = st.number_input('Masukkan kandungan NaCl wb')
-            nacldb = st.number_input('Masukkan kandungan NaCl db')
-            submit = st.form_submit_button("submit")
-            if submit:
-                inputs = np.array([kadar_air,tak_larut,kalsium,magnesium,sulfat,naclwb,nacldb])
-                input_norm = np.array(inputs).reshape(1, -1)
-
-            input_pred = clf.predict(input_norm)
+            # Menggunakan fungsi `read_csv` untuk memuat dataset dari file CSV
+            data = pd.read_csv('https://raw.githubusercontent.com/Feb11F/dataset/main/data%20garam%20(1).csv')
+            #Getting input from user
 
 
-            st.subheader('Hasil Prediksi')
-            # Menampilkan hasil prediksi
-            st.write("Data uji: Kualitas air", input_pred[0])
-            st.write("Akurasi: {:.2f}%".format(accuracy*100))
+            # Memuat dataset 
+            X = data.drop(['Grade','Data'],axis=1)
+            y = data['Grade'] # Kelas
 
-        
-          
+            # Membagi dataset menjadi data latih dan data uji
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
+
+            # Membuat objek Decision Tree Classifier
+            clf = DecisionTreeClassifier(max_depth=9)
+
+            # Melatih Decision Tree Classifier menggunakan data latih
+            clf.fit(X_train, y_train)
+
+            # Memprediksi kelas untuk data uji
+            y_pred = clf.predict(X_test)
+
+            # Menghitung akurasi prediksi
+            accuracy = metrics.accuracy_score(y_test, y_pred)
+            print("Akurasi: {:.2f}%".format(accuracy*100))
+            with st.form("my_form"):
+                st.subheader("Implementasi")
+                kadar_air = st.number_input('Masukkan kadar air')
+                tak_larut = st.number_input('Masukkan kandungan zat tak larut')
+                kalsium = st.number_input('Masukkan kandungan kalsium')
+                magnesium = st.number_input('Masukkan kandungan magnesium')
+                sulfat = st.number_input('Masukkan kandungan sulfat')
+                naclwb = st.number_input('Masukkan kandungan NaCl wb')
+                nacldb = st.number_input('Masukkan kandungan NaCl db')
+                submit = st.form_submit_button("submit")
+                if submit:
+                    inputs = np.array([kadar_air,tak_larut,kalsium,magnesium,sulfat,naclwb,nacldb])
+                    input_norm = np.array(inputs).reshape(1, -1)
+
+                input_pred = clf.predict(input_norm)
 
 
-        
+                st.subheader('Hasil Prediksi')
+                # Menampilkan hasil prediksi
+                st.write("Data uji: Kualitas air", input_pred[0])
+                st.write("Akurasi: {:.2f}%".format(accuracy*100))
+
+
+
+
+
+
