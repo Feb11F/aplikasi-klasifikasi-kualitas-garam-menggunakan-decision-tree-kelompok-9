@@ -79,17 +79,14 @@ with st.container():
                 naclwb = st.number_input('Masukkan kandungan NaCl wb')
                 nacldb = st.number_input('Masukkan kandungan NaCl db')
                 submit = st.form_submit_button("submit")
-                if submit:
-                    inputs = np.array([kadar_air,tak_larut,kalsium,magnesium,sulfat,naclwb,nacldb])
-                    input_norm = np.array(inputs).reshape(1, -1)
-
+                inputs = np.array([kadar_air,tak_larut,kalsium,magnesium,sulfat,naclwb,nacldb])
+                input_norm = np.array(inputs).reshape(1, -1)
                 input_pred = clf.predict(input_norm)
-
-
-                st.subheader('Hasil Prediksi')
+                if submit:
+                    st.subheader('Hasil Prediksi')
                 # Menampilkan hasil prediksi
-                st.write("Data uji: Kualitas air", input_pred[0])
-                st.write("Akurasi: {:.2f}%".format(accuracy*100))
+                    st.write("Data uji: Kualitas air", input_pred[0])
+                    st.write("Akurasi: {:.2f}%".format(accuracy*100))
 
 
 
