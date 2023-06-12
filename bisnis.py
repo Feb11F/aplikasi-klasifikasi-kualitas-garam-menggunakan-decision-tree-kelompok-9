@@ -58,14 +58,16 @@ with st.container():
         st.write("#### NaCl(wb)")
         st.write(""" <p style = "text-align: justify;"> fitur "NaCl(wb)" biasanya menunjukkan persentase kandungan natrium klorida dalam garam berbasis basah atau berat total garam termasuk air. Misalnya, jika terdapat data garam dengan nilai "NaCl(wb)" sebesar 98%, itu berarti bahwa 98% dari berat total garam tersebut adalah natrium klorida dan sisanya adalah air.</p>""",unsafe_allow_html=True)
         st.write("#### NaCl(db)")
-        st.write(""" <p style = "text-align: justify;">"NaCl(db)" pada dataset garam mungkin menunjukkan bahwa tingkat kandungan NaCl diukur menggunakan skala desibel.</p>""",unsafe_allow_html=True)                     
+        st.write(""" <p style = "text-align: justify;">"NaCl(db)" pada dataset garam mungkin menunjukkan bahwa tingkat kandungan NaCl diukur menggunakan skala desibel.</p>""",unsafe_allow_html=True) 
+        data = pd.read_csv('https://raw.githubusercontent.com/Feb11F/dataset/main/data%20garam%20(1).csv')
+        #Getting input from user
+        st.write(data.head())
     if selected == "Implementation":
 
         
         # Menggunakan fungsi `read_csv` untuk memuat dataset dari file CSV
         data = pd.read_csv('https://raw.githubusercontent.com/Feb11F/dataset/main/data%20garam%20(1).csv')
-        #Getting input from user
-        st.write(data.head())
+
         # Memuat dataset 
         X = data.drop(['Grade','Data'],axis=1)
         y = data['Grade'] # Kelas
