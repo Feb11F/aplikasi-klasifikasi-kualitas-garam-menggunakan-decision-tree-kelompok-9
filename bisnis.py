@@ -65,7 +65,7 @@ with st.container():
         # Menggunakan fungsi `read_csv` untuk memuat dataset dari file CSV
         data = pd.read_csv('https://raw.githubusercontent.com/Feb11F/dataset/main/data%20garam%20(1).csv')
         #Getting input from user
-        
+        data.head()
         # Memuat dataset 
         X = data.drop(['Grade','Data'],axis=1)
         y = data['Grade'] # Kelas
