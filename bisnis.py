@@ -66,7 +66,11 @@ with st.container():
         st.write(data.head())
     if selected == "Implementation":
         import joblib
-
+        # Menggunakan pandas untuk membaca file CSV
+        file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
+        data = pd.read_csv(file_path)
+        vectorizer = TfidfVectorizer(max_features=100)
+        X = vectorizer.fit_transform(data['stopword']).toarray()
         loaded_model = joblib.load('final_maxent_model.pkl')
         loaded_vectorizer = joblib.load('tfidf (1).pkl')
 
@@ -86,7 +90,7 @@ with st.container():
                         st.write("Input sebagai list:", ulasan_list)
         
                         # Transformasikan ulasan ke bentuk vektor (gabungkan kembali jika diperlukan)
-                        new_X = loaded_vectorizer.transform([" ".join(ulasan_list)]).toarray()
+                        new_X = vectorizer.transform([" ".join(ulasan_list)]).toarray()
         
                         # Membuat dictionary dengan nama feature sesuai format model
                         new_data_features = {f"feature_{j}": new_X[0][j] for j in range(new_X.shape[1])}
