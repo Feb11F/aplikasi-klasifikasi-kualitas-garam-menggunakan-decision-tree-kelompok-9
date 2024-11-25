@@ -68,7 +68,7 @@ with st.container():
         import joblib
 
         loaded_model = joblib.load('final_maxent_model.pkl')
-        loaded_vectorizer = joblib.load('tfidf_vectorizer.pkl')
+        loaded_vectorizer = joblib.load('tfidf (1).pkl')
 
 
     
