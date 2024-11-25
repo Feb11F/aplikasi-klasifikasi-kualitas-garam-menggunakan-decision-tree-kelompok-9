@@ -79,7 +79,7 @@ with st.container():
             # Mengubah fitur menjadi format yang sesuai dengan model SVM (menggunakan dictionary seperti yang diinginkan)
             # Membuat dictionary dengan nama feature yang mengikuti format yang diberikan
             new_data_features = {f"feature_{j}": new_X[0][j] for j in range(new_X.shape[1])}
-            submit = st.form_submit_button("submit")
+            submit = st.form_submit_button()
             if submit:
                 st.subheader('Hasil Prediksi')
             # Menampilkan hasil prediksi
