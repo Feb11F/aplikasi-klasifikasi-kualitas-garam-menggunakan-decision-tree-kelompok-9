@@ -82,12 +82,12 @@ with st.container():
             submit = st.form_submit_button()
             if submit:
                 st.subheader('Hasil Prediksi')
-            # Menampilkan hasil prediksi
-            # Prediksi menggunakan model yang dimuat
-            new_pred = loaded_model.classify(new_data_features)
-            
-            # Menampilkan hasil prediksi
-            print(f"Prediction for New Data: {new_pred[0]}")
+                # Menampilkan hasil prediksi
+                # Prediksi menggunakan model yang dimuat
+                new_pred = loaded_model.classify(new_data_features)
+                
+                # Menampilkan hasil prediksi
+                print(f"Prediction for New Data: {new_pred[0]}")
 
 
         
