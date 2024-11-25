@@ -45,25 +45,9 @@ with st.container():
         <img src="https://www.mongabay.co.id/wp-content/uploads/2019/08/PETANI-GARAM-LAMONGAN-4.jpg" width="500" height="300">
         </h3>""", unsafe_allow_html=True)
     if selected == "Dataset":
-        st.write("#### Deskripsi Dataset")
-        st.write(""" <p style = "text-align: justify;">Dataset yang digunakan merupakan data garam PT. Sumenep yang memiliki 7 fitur yaitu kadar air,tak larut,kalsium,magnesium,sulfat,NaCl(wb),NaCl(db) dan satu label yaitu grade</p>""",unsafe_allow_html=True)
-        st.write("#### Kadar air")
-        st.write(""" <p style = "text-align: justify;">Kadar air adalah persentase atau fraksi massa air yang terkandung dalam jumlah tertentu garam. Dalam konteks dataset garam, fitur kadar air biasanya digunakan untuk memberikan informasi tentang tingkat kelembaban garam tersebut.</p>""",unsafe_allow_html=True)
-        st.write("#### Tak Larut")
-        st.write(""" <p style = "text-align: justify;">Fitur tak larut pada dataset garam mengacu pada sifat-sifat fisikokimia yang tidak larut dalam air atau memiliki kelarutan yang sangat rendah dalam kondisi tertentu. Dalam konteks garam, fitur tak larut adalah kandungan zat-zat yang tetap padat atau tidak terlarut dalam larutan garam.</p>""",unsafe_allow_html=True)
-        st.write("#### Kalsium")
-        st.write(""" <p style = "text-align: justify;">Dalam konteks dataset garam, fitur kalsium mengacu pada konsentrasi atau jumlah kalsium yang terdeteksi dalam setiap sampel garam yang diukur atau dianalisis.</p>""",unsafe_allow_html=True)
-        st.write("#### Magnesium")
-        st.write(""" <p style = "text-align: justify;">Fitur magnesium dalam dataset garam merujuk pada kandungan atau nilai magnesium yang terdapat dalam garam tersebut. Magnesium adalah unsur kimia yang umumnya hadir dalam bentuk ion Mg2+ dalam senyawa garam.</p>""",unsafe_allow_html=True)   
-        st.write("#### Sulfat")
-        st.write(""" <p style = "text-align: justify;">Sulfat, yang secara kimia direpresentasikan dengan rumus SO4^2-, adalah garam asam sulfat (H2SO4) yang telah kehilangan dua proton (H+). Fitur ini mengacu pada konsentrasi atau jumlah sulfat yang terkandung dalam garam.</p>""",unsafe_allow_html=True)
-        st.write("#### NaCl(wb)")
-        st.write(""" <p style = "text-align: justify;"> fitur "NaCl(wb)" biasanya menunjukkan persentase kandungan natrium klorida dalam garam berbasis basah atau berat total garam termasuk air. Misalnya, jika terdapat data garam dengan nilai "NaCl(wb)" sebesar 98%, itu berarti bahwa 98% dari berat total garam tersebut adalah natrium klorida dan sisanya adalah air.</p>""",unsafe_allow_html=True)
-        st.write("#### NaCl(db)")
-        st.write(""" <p style = "text-align: justify;">"NaCl(db)" pada dataset garam mungkin menunjukkan bahwa tingkat kandungan NaCl diukur menggunakan skala desibel.</p>""",unsafe_allow_html=True) 
-        data = pd.read_csv('https://raw.githubusercontent.com/Feb11F/dataset/main/data%20garam%20(1).csv')
-        #Getting input from user
-        st.write(data.head())
+        file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
+        data = pd.read_csv(file_path)
+        st.write(data.head(10))
     if selected == "Implementation":
         import joblib
         # Menggunakan pandas untuk membaca file CSV
