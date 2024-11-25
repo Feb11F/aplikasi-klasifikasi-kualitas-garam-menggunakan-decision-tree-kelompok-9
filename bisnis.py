@@ -79,7 +79,7 @@ with st.container():
             if submit:
                 if ulasan.strip():  # Validasi input tidak kosong
                     # Transformasikan ulasan ke bentuk vektor
-                    new_X = loaded_vectorizer.transform([ulasan]).toarray()
+                    new_X = loaded_vectorizer.transform(ulasan).toarray()
         
                     # Membuat dictionary dengan nama feature sesuai format model
                     new_data_features = {f"feature_{j}": new_X[0][j] for j in range(new_X.shape[1])}
