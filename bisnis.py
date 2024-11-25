@@ -1,6 +1,6 @@
 from streamlit_option_menu import option_menu
 import pickle
-
+pip install nltk
 import streamlit as st
 import pandas as pd 
 from nltk.classify import MaxentClassifier
