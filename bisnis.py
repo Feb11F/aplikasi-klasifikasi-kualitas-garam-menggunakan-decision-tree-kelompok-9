@@ -8,6 +8,7 @@ from sklearn import metrics
 import numpy as np
 import matplotlib.pyplot as plt
 import warnings
+import nltk
 warnings.filterwarnings('ignore')
 
 st.set_page_config(
