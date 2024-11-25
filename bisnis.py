@@ -73,7 +73,7 @@ with st.container():
 
         with st.form("my_form"):
             st.subheader("Implementasi")
-            ulasan = st.text('Masukkan ulasan')
+            ulasan = st.text_input('Masukkan ulasan')
             new_X = loaded_vectorizer.transform(ulasan).toarray()
 
             # Mengubah fitur menjadi format yang sesuai dengan model SVM (menggunakan dictionary seperti yang diinginkan)
