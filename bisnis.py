@@ -63,19 +63,15 @@ with st.container():
         st.write(data.head())
     if selected == "Implementation":
         # Memuat model dan vectorizer yang telah disimpan
-        with open('svm_model.pkl', 'rb') as f:
+        with open('final_maxent_model.pkl', 'rb') as f:
             loaded_model = pickle.load(f)
         
-        with open('vectorizer.pkl', 'rb') as f:
+        with open('tfidf_vectorizer.pkl', 'rb') as f:
             loaded_vectorizer = pickle.load(f)
 
 
-# Mengubah data baru menjadi vektor menggunakan vectorizer yang dimuat
-new_data_transformed = loaded_vectorizer.transform(new_data)
-        # Melakukan prediksi menggunakan model yang dimuat
-        new_predictions = loaded_model.predict(new_data_transformed)
 
-        print("Akurasi: {:.2f}%".format(accuracynb*100))
+
         with st.form("my_form"):
             st.subheader("Implementasi")
             ulasan = st.text('Masukkan ulasan')
