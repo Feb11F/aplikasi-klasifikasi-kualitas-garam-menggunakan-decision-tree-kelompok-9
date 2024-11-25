@@ -21,9 +21,8 @@ st.set_page_config(
     }
 )
 st.write("""
-<center><h2 style = "text-align: justify;">KLASIFIKASI KUALITAS GARAM PT.GARAM SUMENEP MENGGUNAKAN METODE DECISION TREE,NAIVE BAYES,K-NN,SVM</h2></center>
+<center><h2 style = "text-align: justify;">Analisi Sentimen Wisata Madura Dengan Maximum Entropy</h2></center>
 """,unsafe_allow_html=True)
-st.write("### Dosen Pengampu : Eka Mala Sari Rochman, S.Kom., M.Kom.",unsafe_allow_html=True)
 
 with st.container():
     with st.sidebar:
@@ -63,89 +62,25 @@ with st.container():
         #Getting input from user
         st.write(data.head())
     if selected == "Implementation":
-
+        # Memuat model dan vectorizer yang telah disimpan
+        with open('svm_model.pkl', 'rb') as f:
+            loaded_model = pickle.load(f)
         
-        # Menggunakan fungsi `read_csv` untuk memuat dataset dari file CSV
-        data = pd.read_csv('https://raw.githubusercontent.com/Feb11F/dataset/main/data%20garam%20(1).csv')
-
-        # Memuat dataset 
-        X = data.drop(['Grade','Data'],axis=1)
-        y = data['Grade'] # Kelas
-
-        # Membagi dataset menjadi data latih dan data uji
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
-
-        # Membuat objek Decision Tree Classifier
-        clf = DecisionTreeClassifier(max_depth=9)
-
-        # Melatih Decision Tree Classifier menggunakan data latih
-        clf.fit(X_train, y_train)
-
-        # Memprediksi kelas untuk data uji
-        y_pred = clf.predict(X_test)
+        with open('vectorizer.pkl', 'rb') as f:
+            loaded_vectorizer = pickle.load(f)
 
 
-        #knn
-        from sklearn.neighbors import KNeighborsClassifier
-
-        # Membangun model KNN
-        knn = KNeighborsClassifier(n_neighbors=5)
-
-        # Melatih model dengan data latih
-        knn.fit(X_train, y_train)
-
-        # Memprediksi kelas target menggunakan data uji
-        y_pred2 = knn.predict(X_test)
-
-        # Menghitung akurasi prediksi
-        accuracyknn = metrics.accuracy_score(y_test, y_pred2)
-
-        # Menghitung akurasi prediksi
-        accuracy = metrics.accuracy_score(y_test, y_pred)
-        print("Akurasi: {:.2f}%".format(accuracy*100))
-
-        #nb
-        from sklearn.naive_bayes import GaussianNB
-        
-
-        # Membangun model Naive Bayes
-        nb = GaussianNB()
-
-        # Melatih model dengan data latih
-        nb.fit(X_train, y_train)
-
-        # Memprediksi kelas target menggunakan data uji
-        y_pred3 = nb.predict(X_test)
-        accuracynb = metrics.accuracy_score(y_test, y_pred3)
-        #svm
-        from sklearn.svm import SVC
-        # Membangun model Naive Bayes
-        ksvm = SVC(kernel = 'rbf')
-
-        # Melatih model dengan data latih
-        ksvm.fit(X_train, y_train)
-        # Memprediksi kelas target menggunakan data uji
-        y_pred_ksvm = ksvm.predict(X_test)
-        accuracysvm = metrics.accuracy_score(y_test, y_pred_ksvm)
-        
+# Mengubah data baru menjadi vektor menggunakan vectorizer yang dimuat
+new_data_transformed = loaded_vectorizer.transform(new_data)
+        # Melakukan prediksi menggunakan model yang dimuat
+        new_predictions = loaded_model.predict(new_data_transformed)
 
         print("Akurasi: {:.2f}%".format(accuracynb*100))
         with st.form("my_form"):
             st.subheader("Implementasi")
-            kadar_air = st.number_input('Masukkan kadar air')
-            tak_larut = st.number_input('Masukkan kandungan zat tak larut')
-            kalsium = st.number_input('Masukkan kandungan kalsium')
-            magnesium = st.number_input('Masukkan kandungan magnesium')
-            sulfat = st.number_input('Masukkan kandungan sulfat')
-            naclwb = st.number_input('Masukkan kandungan NaCl wb')
-            nacldb = st.number_input('Masukkan kandungan NaCl db')
-            submit = st.form_submit_button("submit")
-            inputs = np.array([kadar_air,tak_larut,kalsium,magnesium,sulfat,naclwb,nacldb])
-            input_norm = np.array(inputs).reshape(1, -1)
-            input_pred = clf.predict(input_norm)
-            input_pred2 = knn.predict(input_norm)
-            input_pred3 = nb.predict(input_norm)
-            input_pred4 = ksvm.predict(input_norm)
+            ulasan = st.text('Masukkan ulasan')
+            new_data_transformed = loaded_vectorizer.transform(ulasan)
+            input_pred = new_predictions = loaded_model.predict(new_data_transformed)
             if submit:
                 st.subheader('Hasil Prediksi')
             # Menampilkan hasil prediksi
@@ -153,30 +88,7 @@ with st.container():
                 st.success(input_pred[0])
                 st.write("Akurasi: {:.2f}%".format(accuracy*100))
 
-                st.write('KNN')
-                st.success(input_pred2[0])
-                st.write("Akurasi: {:.2f}%".format(accuracyknn*100))
 
-                st.write('Naive Bayes')
-                st.success(input_pred3[0])
-                st.write("Akurasi: {:.2f}%".format(accuracynb*100))
-
-                st.write('Support vector machine')
-                st.success(input_pred4[0])
-                st.write("Akurasi: {:.2f}%".format(accuracysvm*100))
-
-                # Plot bar chart
-                classifiers = ['Decision Tree', 'KNN', 'Naive Bayes', 'SVM']
-                accuracies = [accuracy, accuracyknn, accuracynb, accuracysvm]
-
-                fig, ax = plt.subplots()
-                ax.bar(classifiers, accuracies)
-                ax.set_ylabel('akurasi model')
-                ax.set_title('perbandingan akurasi model')
-                plt.ylim([0, 1])
-
-                # Display plot using Streamlit
-                st.pyplot(fig)
         
           
 
