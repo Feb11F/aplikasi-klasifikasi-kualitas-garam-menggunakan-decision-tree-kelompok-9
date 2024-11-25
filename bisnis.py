@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import warnings
 import nltk
+from sklearn.feature_extraction.text import TfidfVectorizer
 warnings.filterwarnings('ignore')
 
 st.set_page_config(
