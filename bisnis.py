@@ -1,6 +1,5 @@
 from streamlit_option_menu import option_menu
-import pickle
-pip install nltk
+import joblib
 import streamlit as st
 import pandas as pd 
 from nltk.classify import MaxentClassifier
@@ -65,21 +64,21 @@ with st.container():
         #Getting input from user
         st.write(data.head())
     if selected == "Implementation":
-        # Memuat model dan vectorizer yang telah disimpan
-        with open('final_maxent_model.pkl', 'rb') as f:
-            loaded_model = pickle.load(f)
-        
-        with open('tfidf_vectorizer.pkl', 'rb') as f:
-            loaded_vectorizer = pickle.load(f)
+        import joblib
 
+        loaded_model = joblib.load('final_maxent_model.pkl')
+        loaded_vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
 
 
         with st.form("my_form"):
             st.subheader("Implementasi")
             ulasan = st.text('Masukkan ulasan')
-            new_data_transformed = loaded_vectorizer.transform(ulasan)
-            input_pred = new_predictions = loaded_model.predict(new_data_transformed)
+            new_X = loaded_vectorizer.transform(ulasan).toarray()
+
+            # Mengubah fitur menjadi format yang sesuai dengan model SVM (menggunakan dictionary seperti yang diinginkan)
+            # Membuat dictionary dengan nama feature yang mengikuti format yang diberikan
+            new_data_features = {f"feature_{j}": new_X[0][j] for j in range(new_X.shape[1])}
             if submit:
                 st.subheader('Hasil Prediksi')
             # Menampilkan hasil prediksi
