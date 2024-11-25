@@ -3,6 +3,7 @@ import pickle
 
 import streamlit as st
 import pandas as pd 
+from nltk.classify import MaxentClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
