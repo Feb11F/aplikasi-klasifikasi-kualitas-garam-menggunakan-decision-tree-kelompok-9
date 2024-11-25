@@ -70,25 +70,27 @@ with st.container():
         loaded_vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
 
-
+    
         with st.form("my_form"):
             st.subheader("Implementasi")
-            ulasan = st.text_input('Masukkan ulasan')
-            new_X = loaded_vectorizer.transform(ulasan).toarray()
-
-            # Mengubah fitur menjadi format yang sesuai dengan model SVM (menggunakan dictionary seperti yang diinginkan)
-            # Membuat dictionary dengan nama feature yang mengikuti format yang diberikan
-            new_data_features = {f"feature_{j}": new_X[0][j] for j in range(new_X.shape[1])}
-            submit = st.form_submit_button()
+            ulasan = st.text_input('Masukkan ulasan')  # Input ulasan dari pengguna
+            submit = st.form_submit_button("Prediksi")
             if submit:
-                st.subheader('Hasil Prediksi')
-                # Menampilkan hasil prediksi
-                # Prediksi menggunakan model yang dimuat
-                new_pred = loaded_model.classify(new_data_features)
-                
-                # Menampilkan hasil prediksi
-                print(f"Prediction for New Data: {new_pred[0]}")
-
+                if ulasan.strip():  # Validasi input tidak kosong
+                    # Transformasikan ulasan ke bentuk vektor
+                    new_X = loaded_vectorizer.transform([ulasan]).toarray()
+        
+                    # Membuat dictionary dengan nama feature sesuai format model
+                    new_data_features = {f"feature_{j}": new_X[0][j] for j in range(new_X.shape[1])}
+                    
+                    # Prediksi menggunakan model
+                    new_pred = loaded_model.classify(new_data_features)
+        
+                    # Tampilkan hasil prediksi
+                    st.subheader('Hasil Prediksi')
+                    st.write(f"Prediction for New Data: {new_pred}")
+                else:
+                    st.error("Masukkan ulasan terlebih dahulu!")
 
         
           
