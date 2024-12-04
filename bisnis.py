@@ -79,7 +79,7 @@ with st.container():
                 st.write(top_10_reviews)
                 
                 # Transformasi data ulasan ke fitur
-                new_X = loaded_vectorizer.transform(top_10_reviews).toarray()
+                new_X = vectorizer.transform(top_10_reviews).toarray()
                 
                 # Membuat dictionary fitur (jika model membutuhkan format dictionary)
                 features_list = [
