@@ -72,7 +72,7 @@ with st.container():
                 st.success("CSV berhasil dimuat!")
                 st.write(df)  # Tampilkan isi DataFrame
                     # Mengambil 10 data pertama dari kolom 'ulasan'
-                top_10_reviews = df['ulasan'].head(10)
+                top_10_reviews = df['Ulasan'].head(10)
                 
                 # Menampilkan ulasan
                 st.subheader("10 Ulasan Pertama")
