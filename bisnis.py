@@ -60,7 +60,7 @@ with st.container():
 
 
     
-            st.subheader("Implementasi")
+        st.subheader("Implementasi")
             # Judul Aplikasi
         st.title("Load CSV dengan Tombol")
         
@@ -68,7 +68,7 @@ with st.container():
         if st.button("Load CSV"):
             # Ganti "data.csv" dengan path file CSV Anda
             try:
-                df = pd.read_csv("data.csv")
+                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
                 st.success("CSV berhasil dimuat!")
                 st.write(df)  # Tampilkan isi DataFrame
             except FileNotFoundError:
