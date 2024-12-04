@@ -76,33 +76,7 @@ with st.container():
                 st.error("File tidak ditemukan. Pastikan path file benar.")
             except Exception as e:
                 st.error(f"Terjadi kesalahan: {e}")
-            ulasan = st.text_input('Masukkan ulasan')  # Input ulasan dari pengguna
-            submit = st.form_submit_button("Prediksi")
-            if submit:
-                if ulasan.strip():  # Validasi input tidak kosong
-                    try:
-                        # Proses input menjadi list
-                        ulasan_list = ulasan.split()  # Pisahkan input menjadi list kata
-                        
-                        # Tampilkan hasil list
-                        st.write("Input sebagai list:", ulasan_list)
-        
-                        # Transformasikan ulasan ke bentuk vektor (gabungkan kembali jika diperlukan)
-                        new_X = vectorizer.transform([" ".join(ulasan_list)]).toarray()
-        
-                        # Membuat dictionary dengan nama feature sesuai format model
-                        new_data_features = {f"feature_{j}": new_X[0][j] for j in range(new_X.shape[1])}
-                        
-                        # Prediksi menggunakan model
-                        new_pred = loaded_model.classify(new_data_features)
-        
-                        # Tampilkan hasil prediksi
-                        st.subheader('Hasil Prediksi')
-                        st.write(f"Prediction for New Data: {new_pred}")
-                    except Exception as e:
-                        st.error(f"Terjadi kesalahan: {e}")
-                else:
-                    st.error("Masukkan ulasan terlebih dahulu!")
+
 
         
           
