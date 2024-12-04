@@ -62,6 +62,20 @@ with st.container():
     
         with st.form("my_form"):
             st.subheader("Implementasi")
+            # Judul Aplikasi
+        st.title("Load CSV dengan Tombol")
+        
+        # Tambahkan tombol untuk load file CSV
+        if st.button("Load CSV"):
+            # Ganti "data.csv" dengan path file CSV Anda
+            try:
+                df = pd.read_csv("data.csv")
+                st.success("CSV berhasil dimuat!")
+                st.write(df)  # Tampilkan isi DataFrame
+            except FileNotFoundError:
+                st.error("File tidak ditemukan. Pastikan path file benar.")
+            except Exception as e:
+                st.error(f"Terjadi kesalahan: {e}")
             ulasan = st.text_input('Masukkan ulasan')  # Input ulasan dari pengguna
             submit = st.form_submit_button("Prediksi")
             if submit:
