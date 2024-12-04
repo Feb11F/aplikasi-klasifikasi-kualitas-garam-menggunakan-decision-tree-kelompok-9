@@ -60,7 +60,6 @@ with st.container():
 
 
     
-        with st.form("my_form"):
             st.subheader("Implementasi")
             # Judul Aplikasi
         st.title("Load CSV dengan Tombol")
