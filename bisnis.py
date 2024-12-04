@@ -71,6 +71,32 @@ with st.container():
                 df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
                 st.success("CSV berhasil dimuat!")
                 st.write(df)  # Tampilkan isi DataFrame
+                    # Mengambil 10 data pertama dari kolom 'ulasan'
+                top_10_reviews = df['ulasan'].head(10)
+                
+                # Menampilkan ulasan
+                st.subheader("10 Ulasan Pertama")
+                st.write(top_10_reviews)
+                
+                # Transformasi data ulasan ke fitur
+                new_X = loaded_vectorizer.transform(top_10_reviews).toarray()
+                
+                # Membuat dictionary fitur (jika model membutuhkan format dictionary)
+                features_list = [
+                    {f"feature_{j}": new_X[i][j] for j in range(new_X.shape[1])} 
+                    for i in range(new_X.shape[0])
+                ]
+                
+                # Prediksi sentimen untuk setiap ulasan
+                predictions = [loaded_model.classify(features) for features in features_list]
+                
+                # Menampilkan hasil prediksi
+                st.subheader("Hasil Prediksi Sentimen")
+                hasil_prediksi = pd.DataFrame({
+                    "Ulasan": top_10_reviews,
+                    "Prediksi Sentimen": predictions
+                })
+                st.write(hasil_prediksi)
             except FileNotFoundError:
                 st.error("File tidak ditemukan. Pastikan path file benar.")
             except Exception as e:
