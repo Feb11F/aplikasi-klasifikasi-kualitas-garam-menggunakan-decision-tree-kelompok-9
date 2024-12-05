@@ -48,10 +48,22 @@ with st.container():
         file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
         data = pd.read_csv(file_path)
         st.write(data.head(10))
-    if selected == "Dataset":
-        file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
-        data = pd.read_csv(file_path)
-        st.write(data.head(10))
+    if selected == "prediksi ulasan":
+        with st.form("my_form"):
+
+            st.subheader("Implementasi")
+
+            ulasan = st.text('Masukkan ulasan')
+            new_data_transformed = vectorizer.transform(ulasan)
+            new_X = loaded_vectorizer.transform(ulasan).toarray()
+            input_pred = new_predictions = loaded_model.predict(new_data_transformed)
+            # Mengubah fitur menjadi format yang sesuai dengan model SVM (menggunakan dictionary seperti yang diinginkan)
+            # Membuat dictionary dengan nama feature yang mengikuti format yang diberikan
+            new_data_features = {f"feature_{j}": new_X[0][j] for j in range(new_X.shape[1])}
+            if submit:
+    
+
+            # Menampilkan hasil prediksi
     if selected == "Implementation":
         import joblib
         # Menggunakan pandas untuk membaca file CSV
