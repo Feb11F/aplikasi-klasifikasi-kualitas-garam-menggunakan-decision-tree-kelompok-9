@@ -69,9 +69,15 @@ with st.container():
         st.title("Load CSV dengan Tombol")
         
         # Tambahkan tombol untuk load file CSV
-        st.button("pantai x"):
-        st.button("pantai y"):
-        st.button("pantai z"):
+        if st.button("pantai x"):
+            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
+            data = pd.read_csv(file_path)
+            st.write(data.head(10))
+        if st.button("pantai y"):
+            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
+            data = pd.read_csv(file_path)
+            st.write(data.head(10))
+        if st.button("pantai z"):
             # Ganti "data.csv" dengan path file CSV Anda
             try:
                 df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
