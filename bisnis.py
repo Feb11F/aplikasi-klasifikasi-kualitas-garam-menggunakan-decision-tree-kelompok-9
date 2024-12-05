@@ -50,7 +50,6 @@ with st.container():
         st.write(data.head(10))
     if selected == "prediksi ulasan":
         with st.form("my_form"):
-
             st.subheader("Implementasi")
 
             ulasan = st.text('Masukkan ulasan')
