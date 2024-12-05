@@ -31,7 +31,7 @@ with st.container():
     with st.sidebar:
         selected = option_menu(
         st.write("""<h3 style = "text-align: center;"><img src="https://cdn-icons-png.flaticon.com/512/1998/1998664.png" width="120" height="120"></h3>""",unsafe_allow_html=True), 
-        ["Home", "Dataset", "Implementation"], 
+        ["Home", "Dataset","prediksi ulasan", "Implementation"], 
             icons=['house', 'bar-chart','check2-square', 'person'], menu_icon="cast", default_index=0,
             styles={
                 "container": {"padding": "0!important", "background-color": "#412a7a"},
@@ -66,18 +66,30 @@ with st.container():
     
         st.subheader("Implementasi")
             # Judul Aplikasi
-        st.title("Load CSV dengan Tombol")
+        st.title("pilih sentimen wisata")
         
         # Tambahkan tombol untuk load file CSV
-        if st.button("pantai x"):
+        if st.button("Bukit Jaddih"):
             file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
             data = pd.read_csv(file_path)
             st.write(data.head(10))
-        if st.button("pantai y"):
+        if st.button("Pantai Slopeng"):
             file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
             data = pd.read_csv(file_path)
             st.write(data.head(10))
-        if st.button("pantai z"):
+        if st.button("Api Tak Kunjung Padam"):
+            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
+            data = pd.read_csv(file_path)
+            st.write(data.head(10))
+        if st.button("Pantai Sembilan"):
+            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
+            data = pd.read_csv(file_path)
+            st.write(data.head(10))
+        if st.button("Air Terjun Toroan"):
+            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
+            data = pd.read_csv(file_path)
+            st.write(data.head(10))
+        if st.button("Pantai Lombang "):
             # Ganti "data.csv" dengan path file CSV Anda
             try:
                 df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
