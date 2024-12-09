@@ -52,7 +52,7 @@ with st.container():
         file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
         data = pd.read_csv(file_path)
         st.write(data.head(10))
-     if selected == "scrap":
+    if selected == "scrap":
         from bs4 import BeautifulSoup
         from selenium import webdriver
         driver = webdriver.Chrome()
