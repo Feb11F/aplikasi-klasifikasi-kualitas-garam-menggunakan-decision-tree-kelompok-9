@@ -31,7 +31,7 @@ with st.container():
     with st.sidebar:
         selected = option_menu(
         st.write("""<h3 style = "text-align: center;"><img src="https://cdn-icons-png.flaticon.com/512/1998/1998664.png" width="120" height="120"></h3>""",unsafe_allow_html=True), 
-        ["Home", "Dataset","prediksi ulasan", "Implementation"], 
+        ["Home", "Dataset","prediksi ulasan","scrap" ,"Implementation"], 
             icons=['house', 'bar-chart','check2-square', 'person'], menu_icon="cast", default_index=0,
             styles={
                 "container": {"padding": "0!important", "background-color": "#412a7a"},
@@ -52,6 +52,13 @@ with st.container():
         file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
         data = pd.read_csv(file_path)
         st.write(data.head(10))
+     if selected == "scrap":
+        from bs4 import BeautifulSoup
+        from selenium import webdriver
+        driver = webdriver.Chrome()
+        #London Victoria & Albert Museum URL
+        url = 'https://www.google.com/search?q=Pantai+Sembilan+Sumenep&oq=pantai+&gs_lcrp=EgRlZGdlKgkIABBFGDsY-QcyCQgAEEUYOxj5BzIGCAEQRRg7MgYIAhBFGDsyBggDEEUYOTIKCAQQABixAxiABDIQCAUQABiDARixAxiABBiKBTIGCAYQRRg8MgYIBxBFGDwyBggIEEUYPNIBCDEzMTlqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8#wptab=si:ACC90nwjPmqJHrCEt6ewASzksVFQDX8zco_7MgBaIawvaF4-7oGmihWyyA6mzRebluot3gdcQV14yzAAGMP-DERxnRCtifsVFlOCOSZNNrYgUBLWtxgT6sl-Np4JGa3rDIw3wz6pUWXJ'
+        driver.get(url)
     if selected == "Implementation":
         import joblib
         # Menggunakan pandas untuk membaca file CSV
