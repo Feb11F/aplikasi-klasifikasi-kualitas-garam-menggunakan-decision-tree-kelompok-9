@@ -5,3 +5,5 @@ scikit_learn==1.2.2
 streamlit==1.23.1
 streamlit_option_menu==0.3.6
 nltk==3.6.2
+beautifulsoup4==4.11.1
+selenium==4.9.0
