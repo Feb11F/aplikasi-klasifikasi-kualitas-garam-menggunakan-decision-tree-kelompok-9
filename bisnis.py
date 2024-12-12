@@ -45,9 +45,11 @@ with st.container():
         <img src="https://lh5.googleusercontent.com/p/AF1QipNgmGyncJl5jkHg6gnxdTSTqOKtIBpy-kl9PgDz=w540-h312-n-k-no" width="500" height="300">
         </h3>""", unsafe_allow_html=True)
     if selected == "Dataset":
+        st.write("Data Sebelum Preprocessing")
         file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
         data = pd.read_csv(file_path)
         st.write(data['Ulasan'].head(10))
+        st.write("Data Setelah Preprocessing")
         file_path2 = 'data preprocessing.csv'  # Ganti dengan path ke file Anda
         data2 = pd.read_csv(file_path2)
         st.write(data2['Ulasan'].head(10))
