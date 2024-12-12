@@ -30,7 +30,7 @@ st.write("""
 with st.container():
     with st.sidebar:
         selected = option_menu(
-        st.write("""<h3 style = "text-align: center;"><img src="https://lh5.googleusercontent.com/p/AF1QipNgmGyncJl5jkHg6gnxdTSTqOKtIBpy-kl9PgDz=w540-h312-n-k-no" width="120" height="120"></h3>""",unsafe_allow_html=True), 
+        st.write("""<h3 style = "text-align: center;"><img src="" width="120" height="120"></h3>""",unsafe_allow_html=True), 
         ["Home", "Dataset","prediksi ulasan","Implementation"], 
             icons=['house', 'bar-chart','check2-square', 'person'], menu_icon="cast", default_index=0,
             styles={
@@ -42,7 +42,7 @@ with st.container():
         )
     if selected == "Home" :
         st.write("""<h3 style="text-align: center;">
-        <img src="https://www.mongabay.co.id/wp-content/uploads/2019/08/PETANI-GARAM-LAMONGAN-4.jpg" width="500" height="300">
+        <img src="https://lh5.googleusercontent.com/p/AF1QipNgmGyncJl5jkHg6gnxdTSTqOKtIBpy-kl9PgDz=w540-h312-n-k-no" width="500" height="300">
         </h3>""", unsafe_allow_html=True)
     if selected == "Dataset":
         file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
