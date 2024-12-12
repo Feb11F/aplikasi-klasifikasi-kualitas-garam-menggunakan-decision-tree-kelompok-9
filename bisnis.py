@@ -137,7 +137,7 @@ with st.container():
 
         if st.button("Pantai Slopeng"):
             try:
-                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+                df = pd.read_csv("pantai slopeng.csv")
             
                     # Mengambil 10 data pertama dari kolom 'ulasan'
                 top_10_reviews = df['Ulasan'].head(10)
@@ -177,7 +177,7 @@ with st.container():
 
         if st.button("Api Tak Kunjung Padam"):
             try:
-                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+                df = pd.read_csv("api tak kunjung padam.csv")
             
                     # Mengambil 10 data pertama dari kolom 'ulasan'
                 top_10_reviews = df['Ulasan'].head(10)
@@ -217,7 +217,7 @@ with st.container():
 
         if st.button("Pantai Sembilan"):
             try:
-                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+                df = pd.read_csv("pantai sembilan.csv")
             
                     # Mengambil 10 data pertama dari kolom 'ulasan'
                 top_10_reviews = df['Ulasan'].head(10)
@@ -257,7 +257,7 @@ with st.container():
 
         if st.button("Air Terjun Toroan"):
             try:
-                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+                df = pd.read_csv("air terjun toroan.csv")
             
                     # Mengambil 10 data pertama dari kolom 'ulasan'
                 top_10_reviews = df['Ulasan'].head(10)
@@ -298,7 +298,7 @@ with st.container():
         if st.button("Pantai Lombang "):
             # Ganti "data.csv" dengan path file CSV Anda
             try:
-                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+                df = pd.read_csv("pantai lombang.csv")
             
                     # Mengambil 10 data pertama dari kolom 'ulasan'
                 top_10_reviews = df['Ulasan'].head(10)
