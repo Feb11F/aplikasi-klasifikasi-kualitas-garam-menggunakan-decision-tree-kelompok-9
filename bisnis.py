@@ -119,8 +119,7 @@ with st.container():
             # Ganti "data.csv" dengan path file CSV Anda
             try:
                 df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
-                st.success("CSV berhasil dimuat!")
-                st.write(df)  # Tampilkan isi DataFrame
+            
                     # Mengambil 10 data pertama dari kolom 'ulasan'
                 top_10_reviews = df['Ulasan'].head(10)
                 
