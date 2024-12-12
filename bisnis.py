@@ -30,7 +30,7 @@ st.write("""
 with st.container():
     with st.sidebar:
         selected = option_menu(
-        st.write("""<h3 style = "text-align: center;"><img src="" width="120" height="120"></h3>""",unsafe_allow_html=True), 
+        st.write("""<h3 style = "text-align: center;"></h3>""",unsafe_allow_html=True), 
         ["Home", "Dataset","prediksi ulasan","Implementation"], 
             icons=['house', 'bar-chart','check2-square', 'person'], menu_icon="cast", default_index=0,
             styles={
