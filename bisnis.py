@@ -49,26 +49,34 @@ with st.container():
         data = pd.read_csv(file_path)
         st.write(data.head(10))
     if selected == "prediksi ulasan":
-        df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
-                
-                # Transformasi data ulasan ke fitur
-                new_X = vectorizer.transform(top_10_reviews).toarray()
-                
-                # Membuat dictionary fitur (jika model membutuhkan format dictionary)
-                features_list = [
-                    {f"feature_{j}": new_X[i][j] for j in range(new_X.shape[1])} 
-                    for i in range(new_X.shape[0])
-                ]
-                
-                # Prediksi sentimen untuk setiap ulasan
-                predictions = [loaded_model.classify(features) for features in features_list]
-                
-                # Menampilkan hasil prediksi
-                st.subheader("Hasil Prediksi Sentimen")
-                hasil_prediksi = pd.DataFrame({
-                    "Ulasan": top_10_reviews,
-                    "Prediksi Sentimen": predictions
-                })
+        import joblib
+        # Menggunakan pandas untuk membaca file CSV
+        file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
+        data = pd.read_csv(file_path)
+        vectorizer = TfidfVectorizer(max_features=100)
+        X = vectorizer.fit_transform(data['stopword']).toarray()
+        loaded_model = joblib.load('final_maxent_model.pkl')
+        loaded_vectorizer = joblib.load('tfidf (1).pkl')
+        with st.form("my_form"):
+            st.subheader("Implementasi")
+            ulasan = st.text_input('Masukkan ulasan')  # Input ulasan dari pengguna
+            submit = st.form_submit_button("Prediksi")
+            if submit:
+                if ulasan.strip():  # Validasi input tidak kosong
+                    # Transformasikan ulasan ke bentuk vektor
+                    new_X = loaded_vectorizer.transform([ulasan]).toarray()
+        
+                    # Membuat dictionary dengan nama feature sesuai format model
+                    new_data_features = {f"feature_{j}": new_X[0][j] for j in range(new_X.shape[1])}
+                    
+                    # Prediksi menggunakan model
+                    new_pred = loaded_model.classify(new_data_features)
+        
+                    # Tampilkan hasil prediksi
+                    st.subheader('Hasil Prediksi')
+                    st.write(f"Prediction for New Data: {new_pred}")
+                else:
+                    st.error("Masukkan ulasan terlebih dahulu!")
 
     if selected == "Implementation":
         import joblib
