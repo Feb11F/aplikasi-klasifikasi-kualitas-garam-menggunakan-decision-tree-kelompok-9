@@ -126,7 +126,6 @@ with st.container():
                 
                 # Menampilkan ulasan
                 st.subheader("10 Ulasan Pertama")
-                st.write(top_10_reviews)
                 
                 # Transformasi data ulasan ke fitur
                 new_X = vectorizer.transform(top_10_reviews).toarray()
