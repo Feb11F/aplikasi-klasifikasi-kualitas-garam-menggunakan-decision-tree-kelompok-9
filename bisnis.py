@@ -147,6 +147,12 @@ with st.container():
                     "Prediksi Sentimen": predictions
                 })
                 st.write(hasil_prediksi)
+                # Hitung mayoritas kelas
+                from collections import Counter
+                class_counts = Counter(predictions)
+                majority_class = class_counts.most_common(1)[0][0]  # Kelas dengan frekuensi tertinggi
+
+                st.write("Kelas mayoritas (kesimpulan):", majority_class)
             except FileNotFoundError:
                 st.error("File tidak ditemukan. Pastikan path file benar.")
             except Exception as e:
