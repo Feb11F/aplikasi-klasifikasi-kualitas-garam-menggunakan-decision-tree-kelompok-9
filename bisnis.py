@@ -49,16 +49,27 @@ with st.container():
         data = pd.read_csv(file_path)
         st.write(data.head(10))
     if selected == "prediksi ulasan":
-        file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
-        data = pd.read_csv(file_path)
-        st.write(data.head(10))
-    if selected == "scrap":
-        from bs4 import BeautifulSoup
-        from selenium import webdriver
-        driver = webdriver.Chrome()
-        #London Victoria & Albert Museum URL
-        url = 'https://www.google.com/search?q=Pantai+Sembilan+Sumenep&oq=pantai+&gs_lcrp=EgRlZGdlKgkIABBFGDsY-QcyCQgAEEUYOxj5BzIGCAEQRRg7MgYIAhBFGDsyBggDEEUYOTIKCAQQABixAxiABDIQCAUQABiDARixAxiABBiKBTIGCAYQRRg8MgYIBxBFGDwyBggIEEUYPNIBCDEzMTlqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8#wptab=si:ACC90nwjPmqJHrCEt6ewASzksVFQDX8zco_7MgBaIawvaF4-7oGmihWyyA6mzRebluot3gdcQV14yzAAGMP-DERxnRCtifsVFlOCOSZNNrYgUBLWtxgT6sl-Np4JGa3rDIw3wz6pUWXJ'
-        driver.get(url)
+        df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+                
+                # Transformasi data ulasan ke fitur
+                new_X = vectorizer.transform(top_10_reviews).toarray()
+                
+                # Membuat dictionary fitur (jika model membutuhkan format dictionary)
+                features_list = [
+                    {f"feature_{j}": new_X[i][j] for j in range(new_X.shape[1])} 
+                    for i in range(new_X.shape[0])
+                ]
+                
+                # Prediksi sentimen untuk setiap ulasan
+                predictions = [loaded_model.classify(features) for features in features_list]
+                
+                # Menampilkan hasil prediksi
+                st.subheader("Hasil Prediksi Sentimen")
+                hasil_prediksi = pd.DataFrame({
+                    "Ulasan": top_10_reviews,
+                    "Prediksi Sentimen": predictions
+                })
+
     if selected == "Implementation":
         import joblib
         # Menggunakan pandas untuk membaca file CSV
