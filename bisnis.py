@@ -96,25 +96,205 @@ with st.container():
         
         # Tambahkan tombol untuk load file CSV
         if st.button("Bukit Jaddih"):
-            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
-            data = pd.read_csv(file_path)
-            st.write(data.head(10))
+            try:
+                df = pd.read_csv("bukit jaddih.csv")
+            
+                    # Mengambil 10 data pertama dari kolom 'ulasan'
+                top_10_reviews = df['Ulasan'].head(10)
+                
+                # Menampilkan ulasan
+                st.subheader("10 Ulasan Pertama")
+                
+                # Transformasi data ulasan ke fitur
+                new_X = vectorizer.transform(top_10_reviews).toarray()
+                
+                # Membuat dictionary fitur (jika model membutuhkan format dictionary)
+                features_list = [
+                    {f"feature_{j}": new_X[i][j] for j in range(new_X.shape[1])} 
+                    for i in range(new_X.shape[0])
+                ]
+                
+                # Prediksi sentimen untuk setiap ulasan
+                predictions = [loaded_model.classify(features) for features in features_list]
+                
+                # Menampilkan hasil prediksi
+                st.subheader("Hasil Prediksi Sentimen")
+                hasil_prediksi = pd.DataFrame({
+                    "Ulasan": top_10_reviews,
+                    "Prediksi Sentimen": predictions
+                })
+                st.write(hasil_prediksi)
+                # Hitung mayoritas kelas
+                from collections import Counter
+                class_counts = Counter(predictions)
+                majority_class = class_counts.most_common(1)[0][0]  # Kelas dengan frekuensi tertinggi
+
+                st.write("Kelas mayoritas (kesimpulan):", majority_class)
+            except FileNotFoundError:
+                st.error("File tidak ditemukan. Pastikan path file benar.")
+            except Exception as e:
+                st.error(f"Terjadi kesalahan: {e}")
+
         if st.button("Pantai Slopeng"):
-            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
-            data = pd.read_csv(file_path)
-            st.write(data.head(10))
+            try:
+                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+            
+                    # Mengambil 10 data pertama dari kolom 'ulasan'
+                top_10_reviews = df['Ulasan'].head(10)
+                
+                # Menampilkan ulasan
+                st.subheader("10 Ulasan Pertama")
+                
+                # Transformasi data ulasan ke fitur
+                new_X = vectorizer.transform(top_10_reviews).toarray()
+                
+                # Membuat dictionary fitur (jika model membutuhkan format dictionary)
+                features_list = [
+                    {f"feature_{j}": new_X[i][j] for j in range(new_X.shape[1])} 
+                    for i in range(new_X.shape[0])
+                ]
+                
+                # Prediksi sentimen untuk setiap ulasan
+                predictions = [loaded_model.classify(features) for features in features_list]
+                
+                # Menampilkan hasil prediksi
+                st.subheader("Hasil Prediksi Sentimen")
+                hasil_prediksi = pd.DataFrame({
+                    "Ulasan": top_10_reviews,
+                    "Prediksi Sentimen": predictions
+                })
+                st.write(hasil_prediksi)
+                # Hitung mayoritas kelas
+                from collections import Counter
+                class_counts = Counter(predictions)
+                majority_class = class_counts.most_common(1)[0][0]  # Kelas dengan frekuensi tertinggi
+
+                st.write("Kelas mayoritas (kesimpulan):", majority_class)
+            except FileNotFoundError:
+                st.error("File tidak ditemukan. Pastikan path file benar.")
+            except Exception as e:
+                st.error(f"Terjadi kesalahan: {e}")
+
         if st.button("Api Tak Kunjung Padam"):
-            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
-            data = pd.read_csv(file_path)
-            st.write(data.head(10))
+            try:
+                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+            
+                    # Mengambil 10 data pertama dari kolom 'ulasan'
+                top_10_reviews = df['Ulasan'].head(10)
+                
+                # Menampilkan ulasan
+                st.subheader("10 Ulasan Pertama")
+                
+                # Transformasi data ulasan ke fitur
+                new_X = vectorizer.transform(top_10_reviews).toarray()
+                
+                # Membuat dictionary fitur (jika model membutuhkan format dictionary)
+                features_list = [
+                    {f"feature_{j}": new_X[i][j] for j in range(new_X.shape[1])} 
+                    for i in range(new_X.shape[0])
+                ]
+                
+                # Prediksi sentimen untuk setiap ulasan
+                predictions = [loaded_model.classify(features) for features in features_list]
+                
+                # Menampilkan hasil prediksi
+                st.subheader("Hasil Prediksi Sentimen")
+                hasil_prediksi = pd.DataFrame({
+                    "Ulasan": top_10_reviews,
+                    "Prediksi Sentimen": predictions
+                })
+                st.write(hasil_prediksi)
+                # Hitung mayoritas kelas
+                from collections import Counter
+                class_counts = Counter(predictions)
+                majority_class = class_counts.most_common(1)[0][0]  # Kelas dengan frekuensi tertinggi
+
+                st.write("Kelas mayoritas (kesimpulan):", majority_class)
+            except FileNotFoundError:
+                st.error("File tidak ditemukan. Pastikan path file benar.")
+            except Exception as e:
+                st.error(f"Terjadi kesalahan: {e}")
+
         if st.button("Pantai Sembilan"):
-            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
-            data = pd.read_csv(file_path)
-            st.write(data.head(10))
+            try:
+                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+            
+                    # Mengambil 10 data pertama dari kolom 'ulasan'
+                top_10_reviews = df['Ulasan'].head(10)
+                
+                # Menampilkan ulasan
+                st.subheader("10 Ulasan Pertama")
+                
+                # Transformasi data ulasan ke fitur
+                new_X = vectorizer.transform(top_10_reviews).toarray()
+                
+                # Membuat dictionary fitur (jika model membutuhkan format dictionary)
+                features_list = [
+                    {f"feature_{j}": new_X[i][j] for j in range(new_X.shape[1])} 
+                    for i in range(new_X.shape[0])
+                ]
+                
+                # Prediksi sentimen untuk setiap ulasan
+                predictions = [loaded_model.classify(features) for features in features_list]
+                
+                # Menampilkan hasil prediksi
+                st.subheader("Hasil Prediksi Sentimen")
+                hasil_prediksi = pd.DataFrame({
+                    "Ulasan": top_10_reviews,
+                    "Prediksi Sentimen": predictions
+                })
+                st.write(hasil_prediksi)
+                # Hitung mayoritas kelas
+                from collections import Counter
+                class_counts = Counter(predictions)
+                majority_class = class_counts.most_common(1)[0][0]  # Kelas dengan frekuensi tertinggi
+
+                st.write("Kelas mayoritas (kesimpulan):", majority_class)
+            except FileNotFoundError:
+                st.error("File tidak ditemukan. Pastikan path file benar.")
+            except Exception as e:
+                st.error(f"Terjadi kesalahan: {e}")
+
         if st.button("Air Terjun Toroan"):
-            file_path = 'data stopword tes.csv'  # Ganti dengan path ke file Anda
-            data = pd.read_csv(file_path)
-            st.write(data.head(10))
+            try:
+                df = pd.read_csv("https://raw.githubusercontent.com/Feb11F/aplikasi-klasifikasi-kualitas-garam-menggunakan-decision-tree-kelompok-9/refs/heads/main/data%20stopword%20tes.csv")
+            
+                    # Mengambil 10 data pertama dari kolom 'ulasan'
+                top_10_reviews = df['Ulasan'].head(10)
+                
+                # Menampilkan ulasan
+                st.subheader("10 Ulasan Pertama")
+                
+                # Transformasi data ulasan ke fitur
+                new_X = vectorizer.transform(top_10_reviews).toarray()
+                
+                # Membuat dictionary fitur (jika model membutuhkan format dictionary)
+                features_list = [
+                    {f"feature_{j}": new_X[i][j] for j in range(new_X.shape[1])} 
+                    for i in range(new_X.shape[0])
+                ]
+                
+                # Prediksi sentimen untuk setiap ulasan
+                predictions = [loaded_model.classify(features) for features in features_list]
+                
+                # Menampilkan hasil prediksi
+                st.subheader("Hasil Prediksi Sentimen")
+                hasil_prediksi = pd.DataFrame({
+                    "Ulasan": top_10_reviews,
+                    "Prediksi Sentimen": predictions
+                })
+                st.write(hasil_prediksi)
+                # Hitung mayoritas kelas
+                from collections import Counter
+                class_counts = Counter(predictions)
+                majority_class = class_counts.most_common(1)[0][0]  # Kelas dengan frekuensi tertinggi
+
+                st.write("Kelas mayoritas (kesimpulan):", majority_class)
+            except FileNotFoundError:
+                st.error("File tidak ditemukan. Pastikan path file benar.")
+            except Exception as e:
+                st.error(f"Terjadi kesalahan: {e}")
+
         if st.button("Pantai Lombang "):
             # Ganti "data.csv" dengan path file CSV Anda
             try:
