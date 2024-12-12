@@ -30,7 +30,7 @@ st.write("""
 with st.container():
     with st.sidebar:
         selected = option_menu(
-        st.write("""<h3 style = "text-align: center;"><img src="https://cdn-icons-png.flaticon.com/512/1998/1998664.png" width="120" height="120"></h3>""",unsafe_allow_html=True), 
+        st.write("""<h3 style = "text-align: center;"><img src="https://lh5.googleusercontent.com/p/AF1QipNgmGyncJl5jkHg6gnxdTSTqOKtIBpy-kl9PgDz=w540-h312-n-k-no" width="120" height="120"></h3>""",unsafe_allow_html=True), 
         ["Home", "Dataset","prediksi ulasan","Implementation"], 
             icons=['house', 'bar-chart','check2-square', 'person'], menu_icon="cast", default_index=0,
             styles={
